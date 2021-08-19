@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 // Components
 import Item from "./components/item/item";
+import Cart from "./components/cart/cart";
 import { Drawer } from "@material-ui/core";
 import { LinearProgress } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
@@ -45,11 +46,15 @@ const App = () => {
   return (
     <Wrapper>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-        Cart component
+      <Cart 
+        cartItems={cartItems} 
+        addToCart={handleAddToCart}
+        removeFromCart={handleRemoveFromCart}
+      />
       </Drawer>
       <StyledButton onClick={() => setCartOpen(true)}>
-        {/* <Badge badgeContent={getTotalItems(cartItems)}>
-            <AddShoppingCart />
+        {/* <Badge badgeContent={getTotalItems(cartItems)} color="error">
+          <AddShoppingCart/>
         </Badge> */}
       </StyledButton>
       <Grid container spacing={3}>
